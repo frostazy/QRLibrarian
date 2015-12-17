@@ -3,6 +3,9 @@
   <component name="FacetManager">
     <facet type="ejb" name="EJB">
       <configuration>
+        <descriptors>
+          <deploymentDescriptor name="ejb-jar.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/ejb-jar.xml" />
+        </descriptors>
         <ejbRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
@@ -12,7 +15,7 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="OpenJPA" />
+        <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="mysql" value="f9927e1a-a363-42dd-b23f-0029a3ce12e9" />
         </datasource-mapping>
@@ -58,6 +61,15 @@
       <library name="Java EE 6-Java EE 6">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/javax.ejb.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/javax.persistence.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Java EE 6-Java EE 6 (2)">
+        <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/javax.persistence.jar!/" />
         </CLASSES>
         <JAVADOC />

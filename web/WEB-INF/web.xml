@@ -3,12 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <servlet>
-        <servlet-name>Calculator</servlet-name>
-        <servlet-class>EJBtest.CalculatorServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Calculator</servlet-name>
-        <url-pattern>/servlet/CalculatorServlet</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>Calculator</servlet-name>-->
+        <!--<servlet-class>EJBtest.CalculatorServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>Calculator</servlet-name>-->
+        <!--<url-pattern>/servlet/CalculatorServlet</url-pattern>-->
+    <!--</servlet-mapping>-->
 </web-app>

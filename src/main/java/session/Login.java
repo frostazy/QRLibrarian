@@ -6,6 +6,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface Login {
-    public int add(int x,int y);
-    public int substact(int x,int y);
+    public boolean execute();
 }
