@@ -1,6 +1,7 @@
 package entity;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * Created by ZY on 2015/12/17.
@@ -19,7 +20,7 @@ public class Book implements Serializable {
     private String description;
     private Integer availabilitiy;
     private String borrowUser;
-    private String borrowTime;
+    private Timestamp borrowTime;
     private String url;
 
     @Id
@@ -76,12 +77,12 @@ public class Book implements Serializable {
         this.borrowUser = borrowUser;
     }
 
-    @Column(name = "BORROW_TIME", length = 45)
-    public String getBorrowTime() {
+    @Column(name = "BORROW_TIME")
+    public Timestamp getBorrowTime() {
         return borrowTime;
     }
 
-    public void setBorrowTime(String borrowTime) {
+    public void setBorrowTime(Timestamp borrowTime) {
         this.borrowTime = borrowTime;
     }
 

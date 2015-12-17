@@ -7,7 +7,6 @@ import java.io.Serializable;
  */
 
 @NamedQueries({
-        @NamedQuery(name = "getIdByName", query = "from User where name = ?1")
 })
 @Entity
 @Table(name = "user")

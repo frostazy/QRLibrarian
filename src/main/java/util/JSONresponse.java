@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  * Created by ZY on 2015/12/17.
  */
-abstract class JSONResponse {
+abstract public class JSONResponse {
     public static HttpServletResponse set(HttpServletResponse response, JSONObject responseJSON) {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
