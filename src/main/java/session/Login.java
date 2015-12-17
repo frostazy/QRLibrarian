@@ -1,4 +1,6 @@
 package session;
+import net.sf.json.JSONObject;
+
 import javax.ejb.Local;
 
 /**
@@ -6,5 +8,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface Login {
-    public boolean execute();
+    public JSONObject execute(String name, String password);
 }

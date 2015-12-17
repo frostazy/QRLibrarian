@@ -6,6 +6,9 @@ import java.io.Serializable;
  * Created by ZY on 2015/12/17.
  */
 
+@NamedQueries({
+        @NamedQuery(name = "getIdByName", query = "from User where name = ?1")
+})
 @Entity
 @Table(name = "user")
 public class User implements Serializable {

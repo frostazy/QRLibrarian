@@ -67,14 +67,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library name="Java EE 6-Java EE 6 (2)">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/javax.persistence.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="JsonProcessing" level="project" />
   </component>
 </module>
