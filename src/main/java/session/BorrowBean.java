@@ -14,11 +14,11 @@ import java.util.List;
  * Created by ZY on 2015/12/17.
  */
 @Stateless(name = "LoginEJB")
-public class LoginBean implements Login{
+public class BorrowBean implements Login{
     @PersistenceContext(unitName="mysql")
     protected EntityManager em;
 
-    public LoginBean() {
+    public BorrowBean() {
     }
 
     public JSONObject execute(String name, String password) {

@@ -1,6 +1,8 @@
 package servlet;
 
+import net.sf.json.JSONObject;
 import session.Login;
+import util.JSONResponse;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -23,8 +25,8 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-//        JSONObject responseJSON = login.execute(name, password);
-//        JSONResponse.set(response, responseJSON);
+        JSONObject responseJSON = login.execute(name, password);
+        JSONResponse.set(response, responseJSON);
     }
 
     public void init() throws ServletException {
