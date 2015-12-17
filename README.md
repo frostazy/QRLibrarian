@@ -27,5 +27,10 @@ MySQL不用装，连我的就行了，但是需要下载驱动 http://dev.mysql.
   Run/Debug Configurations -> Add -> JBoss Server -> Local  
   右边Deployment标签页加war包  
   
-7.其他问题再说……
+7.Open Module Settings，确认包依赖没有问题，进入Artifacts标签页，把右边的包全部点上  
+  
+8.运行调试，有时候会遇到403 Forbidden的情况，没有什么道理  
+  一般建几个空的Web Application跑一跑可能会变好，也可能不会  
+  
+9.其他问题再说……  
   
