@@ -8,5 +8,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface Borrow {
-    public JSONObject execute(Int userId, Int bookId);
+    public JSONObject execute(Integer userId, Integer bookId);
 }
