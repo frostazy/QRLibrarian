@@ -1,3 +1,7 @@
 .idea/
+lib/
+out/
+classes/
+target/
 QRLibrarian.iml
 README.md
