@@ -5,7 +5,7 @@
 // * Created by ZY on 2015/12/9.
 // */
 //@Stateless(name = "CalculatorEJB")
-//public class CalculatorBean implements Login{
+//public class CalculatorBean implements UserManager{
 //    public CalculatorBean() {
 //
 //    }

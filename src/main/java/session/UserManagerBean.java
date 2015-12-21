@@ -13,22 +13,21 @@ import java.util.List;
 /**
  * Created by ZY on 2015/12/17.
  */
-@Stateless(name = "LoginEJB")
-public class LoginBean implements Login{
+@Stateless(name = "UserManagerEJB")
+public class UserManagerBean implements UserManager {
     @PersistenceContext(unitName="mysql")
     protected EntityManager em;
 
-    public LoginBean() {
+    public UserManagerBean() {
     }
 
-    public JSONObject execute(String name, String password) {
+    public JSONObject login(String name, String password) {
         Query query = em.createNamedQuery("getIdByName");
         query.setParameter(1, name);
         List<User> result = (List<User>)query.getResultList();
         JSONObject json = new JSONObject();
         if(!result.isEmpty()) {
             User user = result.get(0);
-            System.out.println(user.getId());
             if(password.equals(user.getPassword())) {
                 json.put("status", "1");  //login successful
                 json.put("name", user.getName());

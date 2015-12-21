@@ -16,11 +16,11 @@
 // * Created by ZY on 2015/12/17.
 // */
 //public class CalculatorServlet extends HttpServlet {
-//    private Login calculator;
-//    public Login getCalculator() {
+//    private UserManager calculator;
+//    public UserManager getCalculator() {
 //        return calculator;
 //    }
-//    public void setCalculator(Login calculator) {
+//    public void setCalculator(UserManager calculator) {
 //        this.calculator = calculator;
 //    }
 //
@@ -54,7 +54,7 @@
 //    public void init() throws ServletException {
 //        try {
 //            InitialContext context=new InitialContext();
-//            Login calculator=(Login)context.lookup("java:module/CalculatorEJB");
+//            UserManager calculator=(UserManager)context.lookup("java:module/CalculatorEJB");
 //            setCalculator(calculator);
 //            UserManager userManager=(UserManager)context.lookup("java:module/UserManagerEJB");
 //            User user=new User();

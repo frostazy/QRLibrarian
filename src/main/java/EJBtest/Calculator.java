@@ -5,7 +5,7 @@
 // * Created by ZY on 2015/12/9.
 // */
 //@Remote
-//public interface Login {
+//public interface UserManager {
 //    public int add(int x,int y);
 //    public int substact(int x,int y);
 //}

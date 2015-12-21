@@ -1,27 +1,32 @@
 package session;
 
-import entity.User;
 import net.sf.json.JSONObject;
 
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.List;
 
 
 /**
  * Created by ZY on 2015/12/17.
  */
-@Stateless(name = "BorrowEJB")
-public class BorrowBean implements Borrow{
+@Stateful(name = "ActiveUserEJB")
+public class ActiveUserBean implements ActiveUser {
     @PersistenceContext(unitName="mysql")
     protected EntityManager em;
+    private Integer uid;
 
-    public BorrowBean() {
+    public Integer getUid() {return uid;}
+
+    public ActiveUserBean() {
     }
 
-    public JSONObject execute(Integer userId, Integer bookId) {
+    public void init(Integer uid) {
+        this.uid = uid;
+    }
+
+    public JSONObject borrowItem(Integer iid) {
         JSONObject json = new JSONObject();
         return json;
     }

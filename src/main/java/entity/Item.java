@@ -8,17 +8,16 @@ import java.sql.Timestamp;
  */
 
 @NamedQueries({
-        @NamedQuery(name = "getIdByName", query = "from Book where name = ?1")
 })
 @Entity
 @Table(name = "book")
-public class Book implements Serializable {
+public class Item implements Serializable {
 
     private Integer id;      //
-    private String bookname;
+    private String itemName;
     private String author;
     private String description;
-    private Integer availabilitiy;
+    private Integer availability;
     private String borrowUser;
     private Timestamp borrowTime;
     private String url;
@@ -33,12 +32,12 @@ public class Book implements Serializable {
     }
 
     @Column(name = "BOOKNAME", length = 45)
-    public String getBookname() {
-        return bookname;
+    public String getItemname() {
+        return itemName;
     }
 
-    public void setBookname(String bookname) {
-        this.bookname = bookname;
+    public void setItemname(String itemName) {
+        this.itemName = itemName;
     }
 
     @Column(name = "AUTHOR", length = 45)
@@ -60,12 +59,12 @@ public class Book implements Serializable {
     }
 
     @Column(name = "AVAILABILITY")
-    public Integer getAvailabilitiy() {
-        return availabilitiy;
+    public Integer getAvailability() {
+        return availability;
     }
 
-    public void setAvailabilitiy(Integer availabilitiy) {
-        this.availabilitiy = availabilitiy;
+    public void setAvailability(Integer availability) {
+        this.availability = availability;
     }
 
     @Column(name = "BORROW_USER", length = 45)
