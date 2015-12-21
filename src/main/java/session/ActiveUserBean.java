@@ -1,9 +1,9 @@
 package session;
 
+import entity.Item;
 import net.sf.json.JSONObject;
 
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 public class ActiveUserBean implements ActiveUser {
     @PersistenceContext(unitName="mysql")
     protected EntityManager em;
+
     private Integer uid;
 
     public Integer getUid() {return uid;}
@@ -27,7 +28,9 @@ public class ActiveUserBean implements ActiveUser {
     }
 
     public JSONObject borrowItem(Integer iid) {
-        JSONObject json = new JSONObject();
-        return json;
+        Item item = em.find(Item.class, iid);
+        item.setBorrowUser(uid);
+        em.persist(item);
+        return new JSONObject();
     }
 }

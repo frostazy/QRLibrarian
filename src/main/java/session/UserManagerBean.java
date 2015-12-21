@@ -22,7 +22,7 @@ public class UserManagerBean implements UserManager {
     }
 
     public JSONObject login(String name, String password) {
-        Query query = em.createNamedQuery("getIdByName");
+        Query query = em.createNamedQuery("findUserByName");
         query.setParameter(1, name);
         List<User> result = (List<User>)query.getResultList();
         JSONObject json = new JSONObject();

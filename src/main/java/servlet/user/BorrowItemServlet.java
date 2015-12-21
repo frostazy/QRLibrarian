@@ -1,11 +1,7 @@
 package servlet.user;
 
-import net.sf.json.JSONObject;
 import session.ActiveUser;
-import session.UserManager;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by Rain on 2015/12/21.
  */
-@WebServlet("/user/borrow")
+@WebServlet(name = "BorrowItem", value = "/user/borrow")
 public class BorrowItemServlet extends HttpServlet {
     private ActiveUser au;
     private static final String CART_SESSION_KEY = "shoppingCart";
@@ -31,10 +27,9 @@ public class BorrowItemServlet extends HttpServlet {
             //用户未登录
         } else {
             //用户已登录
-            Integer uid, iid ;
-            uid = au.getUid();
+            Integer iid;
             iid = Integer.parseInt(request.getParameter("iid"));
-            //JSONObject responseJSON = um.login(name, password);
+            au.borrowItem(iid);
         }
     }
 

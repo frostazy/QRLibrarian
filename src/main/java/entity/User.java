@@ -7,22 +7,22 @@ import java.io.Serializable;
  */
 
 @NamedQueries({
-        @NamedQuery(name = "getIdByName", query = "from User where name = ?1")
+        @NamedQuery(name = "findUserByName", query = "from User where name = ?1")
 })
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
-    private Integer id;      //
+    private Integer uid;      //
     private String name;
     private String password;
 
     @Id
     @GeneratedValue
     public Integer getId() {
-        return id;
+        return uid;
     }
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer uid) {
+        this.uid = uid;
     }
 
     @Column(name = "NAME", length = 45)

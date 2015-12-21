@@ -8,17 +8,18 @@ import java.sql.Timestamp;
  */
 
 @NamedQueries({
+        @NamedQuery(name = "findItemById", query = "from Item where id = ?1"),
 })
 @Entity
-@Table(name = "book")
+@Table(name = "item")
 public class Item implements Serializable {
 
     private Integer id;      //
     private String itemName;
-    private String author;
+    private String owner;
     private String description;
     private Integer availability;
-    private String borrowUser;
+    private Integer borrowUser;
     private Timestamp borrowTime;
     private String url;
 
@@ -31,22 +32,22 @@ public class Item implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "BOOKNAME", length = 45)
-    public String getItemname() {
+    @Column(name = "ITEMNAME", length = 45)
+    public String getItemName() {
         return itemName;
     }
 
-    public void setItemname(String itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
-    @Column(name = "AUTHOR", length = 45)
-    public String getAuthor() {
-        return author;
+    @Column(name = "OWNER", length = 45)
+    public String getOwner() {
+        return owner;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     @Column(name = "DESCRIPTION", length = 450)
@@ -68,11 +69,11 @@ public class Item implements Serializable {
     }
 
     @Column(name = "BORROW_USER", length = 45)
-    public String getBorrowUser() {
+    public Integer getBorrowUser() {
         return borrowUser;
     }
 
-    public void setBorrowUser(String borrowUser) {
+    public void setBorrowUser(Integer borrowUser) {
         this.borrowUser = borrowUser;
     }
 

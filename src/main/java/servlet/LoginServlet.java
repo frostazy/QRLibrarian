@@ -2,7 +2,6 @@ package servlet;
 
 import net.sf.json.JSONObject;
 import session.ActiveUser;
-import session.ActiveUserBean;
 import session.UserManager;
 import util.JSONResponse;
 
@@ -18,10 +17,10 @@ import java.io.IOException;
 /**
  * Created by ZY on 2015/12/17.
  */
-@WebServlet("/login")
+@WebServlet(name = "Login", value = "/login")
 public class LoginServlet extends HttpServlet {
     private UserManager um;
-    private static final String CART_SESSION_KEY = "shoppingCart";
+    private static final String CART_SESSION_KEY = "ActiveUser";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -36,8 +35,7 @@ public class LoginServlet extends HttpServlet {
             try {
                 InitialContext ic = new InitialContext();
                 ActiveUser au = (ActiveUser) ic.lookup("java:global/QRLibrarian_Web_exploded/ActiveUserEJB!session.ActiveUser");
-                request.getSession().setAttribute("CART_SESSION_KEY", au);  //鍒涘缓鐢ㄦ埛session
-                au.borrowItem(100,100);
+                request.getSession().setAttribute("CART_SESSION_KEY", au);  //创建用户session
             } catch (NamingException e) {
                 e.printStackTrace();
             }
