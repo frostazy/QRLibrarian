@@ -8,7 +8,9 @@ import java.sql.Timestamp;
  */
 
 @NamedQueries({
-        @NamedQuery(name = "findItemById", query = "from Item where id = ?1"),
+        @NamedQuery(name = "findItemByBorrowUser", query = "from Item where borrowUserId = ?1"),
+        @NamedQuery(name = "findAvailableItem", query = "select id, itemName from Item where availability = 1"),
+        @NamedQuery(name = "findNotAvailableItem", query = "select id, itemName from Item where availability = 0")
 })
 @Entity
 @Table(name = "item")
@@ -19,7 +21,8 @@ public class Item implements Serializable {
     private String owner;
     private String description;
     private Integer availability;
-    private Integer borrowUser;
+    private Integer borrowUserId;
+    private String borrowUserName;
     private Timestamp borrowTime;
     private String url;
 
@@ -68,14 +71,20 @@ public class Item implements Serializable {
         this.availability = availability;
     }
 
-    @Column(name = "BORROW_USER", length = 45)
-    public Integer getBorrowUser() {
-        return borrowUser;
+    @Column(name = "BORROW_USER_ID")
+    public Integer getBorrowUserId() {
+        return borrowUserId;
     }
 
-    public void setBorrowUser(Integer borrowUser) {
-        this.borrowUser = borrowUser;
+    public void setBorrowUserId(Integer borrowUserId) {
+        this.borrowUserId = borrowUserId;
     }
+
+
+    @Column(name = "BORROW_USER_NAME", length = 45)
+    public String getBorrowUserName() { return borrowUserName; }
+
+    public void setBorrowUserName(String borrowUserName) { this.borrowUserName = borrowUserName; }
 
     @Column(name = "BORROW_TIME")
     public Timestamp getBorrowTime() {

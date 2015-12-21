@@ -11,21 +11,5 @@
     <title></title>
   </head>
   <body>
-    <form name="f1" action="servlet/CalculatorServlet" method="post">
-      <table>
-        <tr>
-          <td>number1:<input type="text" name="n1"/></td>
-        </tr>
-        <tr>
-          <td>number2:<input type="text" name="n2"/></td>
-        </tr>
-        <tr>
-          <td><input type="submit" name="Submit" value="add"/><input type="submit" name="Submit" value="substract"/></td>
-        </tr>
-      </table>
-    </form>
-    <form   method="post"   action= "test"   name= "test">
-      <input   type= "submit" name="button"/>
-    </form>
   </body>
 </html>

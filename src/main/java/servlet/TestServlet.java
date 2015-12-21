@@ -1,6 +1,8 @@
 package servlet;
 
 import session.ActiveUserUnitTest;
+import session.ItemManagerUnitTest;
+import session.UserManagerUnitTest;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +21,8 @@ public class TestServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ActiveUserUnitTest test = new ActiveUserUnitTest();
-        test.borrowItemTest();
+        new ActiveUserUnitTest().main();
+        new ItemManagerUnitTest().main();
+        new UserManagerUnitTest().main();
     }
 }

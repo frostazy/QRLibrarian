@@ -8,5 +8,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface ItemManager {
-    public JSONObject getBorrowInfo(Integer iid);
+    public JSONObject getItemInfo(Integer iid);
+    public JSONObject getAllItem();
+    public boolean checkAvailability(Integer iid);
 }

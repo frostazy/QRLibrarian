@@ -11,12 +11,5 @@
         <!--&lt;!&ndash;<servlet-name>Calculator</servlet-name>&ndash;&gt;-->
         <!--&lt;!&ndash;<url-pattern>/servlet/CalculatorServlet</url-pattern>&ndash;&gt;-->
     <!--&lt;!&ndash;</servlet-mapping>&ndash;&gt;-->
-    <!--<servlet>-->
-        <!--<servlet-name>LoginServlet</servlet-name>-->
-        <!--<servlet-class>servlet.LoginServlet</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>LoginServlet</servlet-name>-->
-        <!--<url-pattern>/login</url-pattern>-->
-    <!--</servlet-mapping>-->
+
 </web-app>

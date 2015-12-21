@@ -8,7 +8,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface ActiveUser {
-    public void init(Integer uid);
+    public void init(Integer uid, String name);
     public JSONObject borrowItem(Integer iid);
+    public JSONObject returnItem(Integer iid);
     public Integer getUid();
 }
