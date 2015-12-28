@@ -8,8 +8,13 @@ import javax.ejb.Local;
  */
 @Local
 public interface ActiveUser {
-    public void init(Integer uid, String name);
-    public JSONObject borrowItem(Integer iid);
-    public JSONObject returnItem(Integer iid);
-    public Integer getUid();
+    Integer getUid();
+    JSONObject login(String name, String password);
+    JSONObject borrowItem(Integer iid);
+    JSONObject returnItem(Integer iid);
+    JSONObject createItem(Integer fid, String itemName, String description);
+    JSONObject changeItem(Integer iid, String itemName, String description);
+    JSONObject removeItem(Integer iid);
+    JSONObject createPrivilege(String userName, Integer fid, Integer role);
+    JSONObject removePrivilege(String userName, Integer fid);
 }

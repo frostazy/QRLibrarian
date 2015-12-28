@@ -2,8 +2,7 @@ package servlet.user;
 
 import net.sf.json.JSONObject;
 import session.ActiveUser;
-import session.UserManager;
-import util.JSONResponse;
+import util.ServletHelper;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -19,7 +18,7 @@ import java.io.IOException;
  */
 @WebServlet(name = "Login", value = "user/login")
 public class LoginServlet extends HttpServlet {
-    private UserManager um;
+    private ActiveUser activeUser;
     private static final String USER_SESSION_KEY = "ActiveUser";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,28 +29,26 @@ public class LoginServlet extends HttpServlet {
         String name, password;
         name = request.getParameter("name");
         password = request.getParameter("password");
-        JSONObject responseJSON = um.login(name, password);
-        if(responseJSON.getInt("status") == 1){
-            try {
-                InitialContext ic = new InitialContext();
-                ActiveUser au = (ActiveUser) ic.lookup("java:global/QRLibrarian_Web_exploded/ActiveUserEJB!session.ActiveUser");
-                request.getSession().setAttribute(USER_SESSION_KEY, au);  //创建用户session
-                au.init(responseJSON.getInt("uid"), responseJSON.getString("name"));
-            } catch (NamingException e) {
-                e.printStackTrace();
+        JSONObject responseJSON = activeUser.login(name, password);
+
+        if(responseJSON.getInt("status") == 1) {
+            request.getSession().setAttribute(USER_SESSION_KEY, activeUser);  //创建用户登陆session
+            if(request.getSession().getAttribute("request") != null) {
+                response.sendRedirect(request.getSession().getAttribute("request").toString()
+                        + "?iid=" + request.getSession().getAttribute("iid")); //跳转到登录前页面
+                System.out.println(request.getSession().getAttribute("request").toString()
+                        + "?iid=" + request.getSession().getAttribute("iid"));
+                request.getSession().removeAttribute("request");
+                request.getSession().removeAttribute("iid");
             }
         }
-        responseJSON.put("action", request.getSession().getAttribute("action"));
-        responseJSON.put("actionIid", request.getSession().getAttribute("actionIid"));//tiaozhuan
-        request.getSession().removeAttribute("action");
-        request.getSession().removeAttribute("actionIid");
-        JSONResponse.set(response, responseJSON);
+        ServletHelper.setJSON(response, responseJSON);
     }
 
     public void init() throws ServletException {
         try {
             InitialContext ic = new InitialContext();
-            um = (UserManager)ic.lookup("java:global/QRLibrarian_Web_exploded/UserManagerEJB!session.UserManager");
+            activeUser = (ActiveUser)ic.lookup("java:module/ActiveUserEJB");
         } catch (NamingException e) {
             e.printStackTrace();
         }

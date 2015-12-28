@@ -1,7 +1,7 @@
 package servlet.view;
 
-import session.ItemManager;
-import util.JSONResponse;
+import session.Viewer;
+import util.ServletHelper;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -17,20 +17,24 @@ import java.io.IOException;
  */
 @WebServlet(name = "ItemView", value = "/view/item")
 public class ItemViewServlet extends HttpServlet {
-    private ItemManager im;
+    private Viewer viewer;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        JSONResponse.set(response, im.getItemInfo(Integer.parseInt(request.getParameter("iid"))));
+        try {
+            ServletHelper.setJSON(response, viewer.getItemInfo(Integer.parseInt(request.getParameter("iid"))));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     public void init() throws ServletException {
         try {
             InitialContext ic = new InitialContext();
-            im = (ItemManager)ic.lookup("java:global/QRLibrarian_Web_exploded/ItemManagerEJB!session.ItemManager");
+            viewer = (Viewer)ic.lookup("java:module/ViewerEJB");
         } catch (NamingException e) {
             e.printStackTrace();
         }

@@ -1,28 +1,22 @@
 1. /user/login?name=testuser&password=password
     result = {
-        status: 1, //1,0,-1
+        status: 1, //1表示登陆成功，0表示无此用户，-1表示登陆失败，后两种情况不会返回其他数据
         uid: 1,
         name: "testuser",
         ..
-        action: "borrow",
-        actionIid: 1
     }
 
-2. /view/item?iid=1
+2. /view/item?iid=2
     result = {
-        status: 1, //
-        iid: 1,
+        iid: 2,
         name: "testitem",
-        owner: "",
+        fid: 3,  //表示物品所属的域id
         description: "",
-        availability: 1,
-        borrowUserId: 1,
-        borrowUserName: "testuser",
-        borrowTime: "2015-12-21 22:21:23"
+        availability: 1, //1表示可以借阅，0表示不可借阅
         url: ""
     }
 
-3. /view/allitem
+3. /view/field?fid=3
     result = {
         available: [
             {
@@ -52,11 +46,13 @@
         borrowItem: [
             {
                 iid: 1
-                name: ""testitem1
+                name: "testitem1"
+                fid: 1
                 borrowTime: "2015-12-21 22:21:23"
             }, {
                 iid: 2
                 name: "testitem2"
+                fid: 1
                 borrowTime: "2015-12-21 22:21:23"
             }, ..
         ]
@@ -71,10 +67,12 @@
             {
                 iid: 1
                 name: testitem1"
+                fid: 1
                 borrowTime: "2015-12-21 22:21:23"
             }, {
                 iid: 2
                 name: "testitem2"
+                fid: 1
                 borrowTime: "2015-12-21 22:21:23"
             }, ..
         ]

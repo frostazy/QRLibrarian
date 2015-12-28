@@ -1,7 +1,7 @@
 package servlet.view;
 
-import session.ItemManager;
-import util.JSONResponse;
+import session.Viewer;
+import util.ServletHelper;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -15,22 +15,26 @@ import java.io.IOException;
 /**
  * Created by ZY on 2015/12/21.
  */
-@WebServlet(name = "AllItem", value = "/view/allitem")
-public class AllItemServlet extends HttpServlet {
-    private ItemManager im;
+@WebServlet(name = "FieldView", value = "/view/field")
+public class FieldViewServlet extends HttpServlet {
+    private Viewer viewer;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        JSONResponse.set(response, im.getAllItem());
+        try {
+            ServletHelper.setJSON(response, viewer.getItemByField(Integer.parseInt(request.getParameter("fid"))));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     public void init() throws ServletException {
         try {
             InitialContext ic = new InitialContext();
-            im = (ItemManager)ic.lookup("java:global/QRLibrarian_Web_exploded/ItemManagerEJB!session.ItemManager");
+            viewer = (Viewer)ic.lookup("java:module/ViewerEJB");
         } catch (NamingException e) {
             e.printStackTrace();
         }

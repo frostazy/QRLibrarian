@@ -1,33 +1,39 @@
 package entity;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * Created by ZY on 2015/12/17.
  */
 
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NamedQueries({
-        @NamedQuery(name = "findItemByBorrowUser", query = "from Item where borrowUserId = ?1"),
-        @NamedQuery(name = "findAvailableItem", query = "select id, itemName from Item where availability = 1"),
-        @NamedQuery(name = "findNotAvailableItem", query = "select id, itemName from Item where availability = 0")
+        @NamedQuery(name = "findItemByField", query = "from Item where field = ?1"),
+        @NamedQuery(name = "findAllItem", query = "from Item"),
 })
 @Entity
 @Table(name = "item")
 public class Item implements Serializable {
 
+    public final static Integer AVAILABLE = 1;
+    public final static Integer NOT_AVAILABLE = 0;
     private Integer id;      //
     private String itemName;
-    private String owner;
+    private Integer field;
     private String description;
-    private Integer availability;
-    private Integer borrowUserId;
-    private String borrowUserName;
-    private Timestamp borrowTime;
+    private Integer availability; //1表示可出借，0表示不可出借
     private String url;
 
     @Id
-    @GeneratedValue
+    @TableGenerator(
+            name = "ITEM_ID", //表ID策略名字
+            table = "hibernate_sequences", //数据库表名字
+            pkColumnName = "sequence_name",//字段名1 pk=primary key
+            valueColumnName = "next_val", //字段名2
+            pkColumnValue = "item",//字段1值
+            allocationSize = 1//每次增加的值...详情看视频hibernate 23
+    )
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "ITEM_ID")
     public Integer getId() {
         return id;
     }
@@ -44,13 +50,13 @@ public class Item implements Serializable {
         this.itemName = itemName;
     }
 
-    @Column(name = "OWNER", length = 45)
-    public String getOwner() {
-        return owner;
+    @Column(name = "OWNER")
+    public Integer getField() {
+        return field;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setField(Integer field) {
+        this.field = field;
     }
 
     @Column(name = "DESCRIPTION", length = 450)
@@ -69,30 +75,6 @@ public class Item implements Serializable {
 
     public void setAvailability(Integer availability) {
         this.availability = availability;
-    }
-
-    @Column(name = "BORROW_USER_ID")
-    public Integer getBorrowUserId() {
-        return borrowUserId;
-    }
-
-    public void setBorrowUserId(Integer borrowUserId) {
-        this.borrowUserId = borrowUserId;
-    }
-
-
-    @Column(name = "BORROW_USER_NAME", length = 45)
-    public String getBorrowUserName() { return borrowUserName; }
-
-    public void setBorrowUserName(String borrowUserName) { this.borrowUserName = borrowUserName; }
-
-    @Column(name = "BORROW_TIME")
-    public Timestamp getBorrowTime() {
-        return borrowTime;
-    }
-
-    public void setBorrowTime(Timestamp borrowTime) {
-        this.borrowTime = borrowTime;
     }
 
     @Column(name = "URL", length = 45)
