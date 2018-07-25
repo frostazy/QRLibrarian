@@ -1,8 +1,8 @@
 # QRLibrarian
 
-IntelliJ IDEA，旗舰版，不是社区版 http://www.jetbrains.com/idea/  
-Wildfly，这个要装，因为是本地调试的 http://download.jboss.org/wildfly/9.0.2.Final/wildfly-9.0.2.Final.zip  
-MySQL 不用装，连我的就行了，但是需要下载驱动 http://dev.mysql.com/downloads/connector/j/  
+IntelliJ IDEA 旗舰版 http://www.jetbrains.com/idea/  
+Wildfly，这个要装，因为本地调试 http://download.jboss.org/wildfly/9.0.2.Final/wildfly-9.0.2.Final.zip  
+MySQL 暂时不用装，连我的就行了，但是需要下载这个 http://dev.mysql.com/downloads/connector/j/  
 
 __1.__  首先，配置 Wildfly，也就是 JBoss  
   到解压目录，运行 bin/add-user.bat，注册管理员和用户账户  
